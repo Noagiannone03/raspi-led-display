@@ -18,7 +18,7 @@ apt-get update
 
 # Installation des dépendances
 echo "[2/8] Installation des dépendances..."
-apt-get install -y python3-dev python3-pillow git build-essential
+apt-get install -y python3-dev python3-pillow python3-pip python3-setuptools cython3 git build-essential
 
 # Désactivation du son (nécessaire pour la matrice LED)
 echo "[3/8] Désactivation du module son..."

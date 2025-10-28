@@ -98,19 +98,19 @@ def test_configuration(config):
         image = Image.new('RGB', (matrix.width, matrix.height))
         draw = ImageDraw.Draw(image)
         draw.rectangle((0, 0, matrix.width, matrix.height), fill=(255, 0, 0))
-        matrix.SetImage(image)
+        matrix.SetImage(image.convert('RGB'))
         time.sleep(3)
 
         # Test 2: Rectangle vert
         print("Test 2: Rectangle vert (3 secondes)...")
         draw.rectangle((0, 0, matrix.width, matrix.height), fill=(0, 255, 0))
-        matrix.SetImage(image)
+        matrix.SetImage(image.convert('RGB'))
         time.sleep(3)
 
         # Test 3: Rectangle bleu
         print("Test 3: Rectangle bleu (3 secondes)...")
         draw.rectangle((0, 0, matrix.width, matrix.height), fill=(0, 0, 255))
-        matrix.SetImage(image)
+        matrix.SetImage(image.convert('RGB'))
         time.sleep(3)
 
         # Test 4: Texte
@@ -119,7 +119,7 @@ def test_configuration(config):
         draw.text((5, 5), "HELLO", fill=(255, 255, 255))
         draw.text((5, 25), "MATRIX", fill=(0, 255, 255))
         draw.text((5, 45), "64x64", fill=(255, 255, 0))
-        matrix.SetImage(image)
+        matrix.SetImage(image.convert('RGB'))
         time.sleep(3)
 
         # Clear

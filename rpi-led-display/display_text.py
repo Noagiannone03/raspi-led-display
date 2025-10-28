@@ -85,7 +85,7 @@ def display_static_text(matrix, text, color=(255, 255, 255), duration=10):
         draw.text((2, y_offset), line, font=font, fill=color)
         y_offset += line_height
 
-    matrix.SetImage(image)
+    matrix.SetImage(image.convert('RGB'))
     time.sleep(duration)
 
 def display_scrolling_text(matrix, text, color=(255, 255, 255), speed=0.05):
@@ -115,7 +115,7 @@ def display_scrolling_text(matrix, text, color=(255, 255, 255), speed=0.05):
         for x_offset in range(0, text_width + matrix.width):
             # Crée une vue de la partie visible
             cropped = image.crop((x_offset, 0, x_offset + matrix.width, matrix.height))
-            matrix.SetImage(cropped)
+            matrix.SetImage(cropped.convert('RGB'))
             time.sleep(speed)
     except KeyboardInterrupt:
         pass
