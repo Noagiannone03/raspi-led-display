@@ -7,14 +7,20 @@ Usage: sudo python3 display_text.py "Votre texte ici"
 import sys
 import time
 import argparse
+import os
 
-sys.path.append('rpi-rgb-led-matrix/bindings/python')
+# Ajoute le chemin absolu vers le module
+script_dir = os.path.dirname(os.path.abspath(__file__))
+rgb_matrix_path = os.path.join(script_dir, 'rpi-rgb-led-matrix', 'bindings', 'python')
+sys.path.insert(0, rgb_matrix_path)
 
 try:
     from rgbmatrix import RGBMatrix, RGBMatrixOptions
     from PIL import Image, ImageDraw, ImageFont
 except ImportError as e:
     print("ERREUR: Modules non trouvés. Exécutez d'abord: sudo bash install.sh")
+    print(f"Chemin recherché: {rgb_matrix_path}")
+    print(f"Erreur détaillée: {e}")
     sys.exit(1)
 
 def create_matrix(config=None):

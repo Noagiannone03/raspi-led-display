@@ -6,9 +6,12 @@ Ce script teste différentes configurations pour trouver celle qui fonctionne
 
 import sys
 import time
+import os
 
-# Configuration des chemins
-sys.path.append('rpi-rgb-led-matrix/bindings/python')
+# Configuration des chemins - utilise le chemin absolu
+script_dir = os.path.dirname(os.path.abspath(__file__))
+rgb_matrix_path = os.path.join(script_dir, 'rpi-rgb-led-matrix', 'bindings', 'python')
+sys.path.insert(0, rgb_matrix_path)
 
 try:
     from rgbmatrix import RGBMatrix, RGBMatrixOptions
@@ -16,6 +19,7 @@ try:
 except ImportError as e:
     print("ERREUR: Impossible d'importer les modules nécessaires")
     print(f"Détail: {e}")
+    print(f"Chemin recherché: {rgb_matrix_path}")
     print("\nVeuillez d'abord exécuter: sudo bash install.sh")
     sys.exit(1)
 
