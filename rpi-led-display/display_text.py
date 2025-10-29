@@ -125,10 +125,18 @@ def main():
     parser.add_argument('text', nargs='?', default='HELLO LED!', help='Texte à afficher')
     parser.add_argument('--scroll', action='store_true', help='Fait défiler le texte')
     parser.add_argument('--color', default='255,255,255', help='Couleur RGB (ex: 255,0,0 pour rouge)')
-    parser.add_argument('--duration', type=int, default=10, help='Durée d\'affichage en secondes (mode statique)')
+    parser.add_argument('--duration', type=int, default=10, help='Durée d'affichage en secondes (mode statique)')
     parser.add_argument('--speed', type=float, default=0.05, help='Vitesse de défilement (mode scroll)')
+    parser.add_argument('--rows', type=int, default=64, help='Nombre de lignes de la matrice LED (ex: 32, 64)')
+    parser.add_argument('--cols', type=int, default=64, help='Nombre de colonnes de la matrice LED (ex: 32, 64)')
+    parser.add_argument('--chain-length', type=int, default=1, help='Nombre de panneaux chaînés')
+    parser.add_argument('--parallel', type=int, default=1, help='Nombre de chaînes parallèles')
+    parser.add_argument('--row-addr-type', type=int, default=0, help='Type d'adressage des lignes (0, 1, ou 2)')
+    parser.add_argument('--multiplexing', type=int, default=0, help='Type de multiplexage (0, 1...)')
+    parser.add_argument('--hardware-mapping', type=str, default='regular', help='Mapping matériel (ex: regular, adafruit-hat)')
     parser.add_argument('--brightness', type=int, default=70, help='Luminosité (0-100)')
-    parser.add_argument('--row-addr-type', type=int, default=0, help='Type d\'adressage (0, 1, ou 2)')
+    parser.add_argument('--pwm-lsb-nanoseconds', type=int, default=130, help='Durée de PWM LSB en Nanosecondes')
+    parser.add_argument('--disable-hardware-pulsing', action='store_true', help='Désactiver le pulsing matériel')
 
     args = parser.parse_args()
 
@@ -158,8 +166,16 @@ Démarrage...
     try:
         # Configuration personnalisée
         config = {
-            'brightness': args.brightness,
+            'rows': args.rows,
+            'cols': args.cols,
+            'chain_length': args.chain_length,
+            'parallel': args.parallel,
             'row_address_type': args.row_addr_type,
+            'multiplexing': args.multiplexing,
+            'hardware_mapping': args.hardware_mapping,
+            'brightness': args.brightness,
+            'pwm_lsb_nanoseconds': args.pwm_lsb_nanoseconds,
+            'disable_hardware_pulsing': args.disable_hardware_pulsing,
         }
 
         # Crée la matrice
