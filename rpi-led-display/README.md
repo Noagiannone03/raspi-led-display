@@ -1,13 +1,15 @@
-# Affichage LED Matrix 64x64 pour Raspberry Pi
+# 🎮 Affichage LED Matrix HUB75 pour Raspberry Pi
 
-Projet complet pour afficher du texte et des graphiques sur un écran LED RGB 64x64 avec Raspberry Pi.
+Projet complet pour afficher du texte et des graphiques sur un panneau LED HUB75 avec Raspberry Pi.
+
+**✨ Spécialement configuré pour panneau P3 128×64-32S (DV08-210519)**
 
 ## 🔧 Matériel requis
 
-- **Raspberry Pi** (3, 4, ou Zero W recommandé)
-- **Écran LED RGB 64x64** (référence DV08-210519 ou similaire)
-- **Alimentation 5V/4A minimum** (l'écran consomme beaucoup !)
-- **Câbles de connexion** (généralement fournis avec l'écran)
+- **Raspberry Pi 4 Model B** (ou Pi 3, Zero W)
+- **Panneau LED P3 128×64-32S** HUB75 (référence DV08-210519 ou similaire)
+- **Alimentation 5V externe** minimum **5A** (recommandé **10A** pour un panneau 128×64)
+- **Câbles de connexion** ou **Adafruit RGB Matrix HAT** (recommandé)
 
 ## 📦 Installation sur le Raspberry Pi
 
