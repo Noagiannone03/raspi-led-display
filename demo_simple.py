@@ -42,10 +42,13 @@ def create_matrix():
     options.pwm_bits = 11          # Qualité PWM
     options.gpio_slowdown = 2      # Ralentissement pour stabilité
 
-    # Paramètres pour certains types d'écrans
+    # CRITIQUE: Ton panneau utilise adressage ABC uniquement !
+    options.row_address_type = 3   # ABC addressing (IMPORTANT!)
     options.multiplexing = 0       # Mode de multiplexage
-    options.row_address_type = 0   # Type d'adressage
     options.led_rgb_sequence = "RGB"  # Ordre des couleurs
+
+    # Décommente si ton panneau a le chip FM6126A:
+    # options.panel_type = "FM6126A"
 
     return RGBMatrix(options=options)
 
